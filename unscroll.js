@@ -48,6 +48,16 @@ let remExploreButton = () => {
     }
 }
 
+let redirectHomeLink = () => {
+    let homeLinks = document.querySelectorAll('a[href="/"]');
+    if (!homeLinks) {
+        return
+    }
+    for (let i = 0; i < homeLinks.length; i++) {
+        homeLinks[i].setAttribute("href", "/?variant=following");
+    } 
+}
+
 let remExplorePosts = () => {
     if (isSearchpage) {
         const loader = document.querySelector('svg[aria-label="Loading..."]');
@@ -128,6 +138,7 @@ let onPageUpdate = () => {
 
     remReelsButton();
     remExploreButton();
+    redirectHomeLink();
     //remExplorePosts();
     remSuggestedFollowers();
 };
