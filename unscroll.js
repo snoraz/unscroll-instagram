@@ -35,6 +35,19 @@ let remReelsButton = () => {
     }
 }
 
+let remExploreButton = () => {
+    let exploreLink = document.querySelector('a[href="/explore/"]');
+    if (!exploreLink) {
+        return
+    }
+    let exploreContainer = exploreLink.parentElement?.parentElement?.parentElement;
+    if (exploreContainer) {
+        exploreContainer.remove();
+    } else {
+        exploreLink.remove();
+    }
+}
+
 let remExplorePosts = () => {
     if (isSearchpage) {
         const loader = document.querySelector('svg[aria-label="Loading..."]');
@@ -114,7 +127,8 @@ let onPageUpdate = () => {
     if (hideHome) remHomeButton();
 
     remReelsButton();
-    remExplorePosts();
+    remExploreButton();
+    //remExplorePosts();
     remSuggestedFollowers();
 };
 
